@@ -641,8 +641,6 @@ def get_or_create_sqs_queue(queue_name):
 
 
 def load_challenge_and_return_max_submissions(q_params):
-    logger.info('load_challenge_and_return_max_submissions')
-    logger.info(q_params)
     try:
         challenge = Challenge.objects.get(**q_params)
     except Challenge.DoesNotExist:
@@ -654,7 +652,6 @@ def load_challenge_and_return_max_submissions(q_params):
     maximum_concurrent_submissions = (
         challenge.max_concurrent_submission_evaluation
     )
-    logger.info(PHASE_ANNOTATION_FILE_NAME_MAP)
     return maximum_concurrent_submissions, challenge
 
 
